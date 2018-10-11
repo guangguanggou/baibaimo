@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.Dao.LoginDao">
+    <select id="getAdmin" parameterType="java.util.Map" resultType="Quanxian">
+        select a.aid,a.anum,a.aname,j.roleid,j.rolename,j.roledesc,j.img,t.treeid,t.treename,t.treeurl,t.treeimg,t.tree from admin_user a join jxc_role j on a.roleid=j.roleid join role_join_menu rm on j.roleid=rm.roleid join tree_menu t on t.treeid=rm.treeid join user_join_role uj on uj.aid=a.aid where a.anum=#{userName} and a.apass=#{passWord}
+    </select>
+    <select id="getAdmin2" parameterType="String" resultType="java.util.Map">
+        select * from admin_user a join jxc_role j on a.roleid=j.roleid join role_join_menu rm on j.roleid=rm.roleid join tree_menu t on t.treeid=rm.treeid join user_join_role uj on uj.aid=a.aid where a.anum=#{anum}
+    </select>
+</mapper>

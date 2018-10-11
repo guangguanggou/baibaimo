@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	<!-- Shiro's main business-tier object for web-enabled applications -->  
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
+        <property name="realm" ref="myShiroRealm" />  
+        <property name="cacheManager" ref="cacheManager" />  
+    </bean>  
+
+    <!-- 項目自定义的Realm -->  
+    <bean id="myShiroRealm" class="com.aaa.Service.MyShiroRealm">
+        <property name="cacheManager" ref="cacheManager" />  
+    </bean>  
+
+    <!-- Shiro Filter -->  
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean"> 
+       <!-- 必须的配置 --> 
+        <property name="securityManager" ref="securityManager" />  
+        <!--如果认证失败，用户名或者密码错误，就会执行这个配置  -->
+        <property name="loginUrl" value="/userControll/toLogin.action" />
+        <!-- 认证成功之后跳转的位置 --> 
+        <property name="successUrl" value="/userControll/list.action" />
+         <!-- 访问了无权访问的页面时，跳转该页面 -->
+        <property name="unauthorizedUrl" value="/error.html" />
+        <property name="filterChainDefinitions">  
+            <value>  
+            
+               /userControll/toLogin.action = anon  <!-- anon免拦截   authc需要拦截的资源  **代表拦截所有的-->
+                /userControll/login.action = anon  <!-- anon免拦截   authc需要拦截的资源  **代表拦截所有的-->
+               /** = authc 
+            </value>  
+        </property>  
+    </bean>  
+
+    <!-- 用户授权信息Cache -->  
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />  
+
+
+</beans>

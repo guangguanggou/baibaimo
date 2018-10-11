@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>登录界面</title>
+    <link href="/js/layui2/css/default.css" rel="stylesheet" type="text/css" />
+    <!--必要样式-->
+    <link href="/js/layui2/css/styles.css" rel="stylesheet" type="text/css" />
+    <link href="/js/layui2/css/demo.css" rel="stylesheet" type="text/css" />
+    <link href="/js/layui2/css/loaders.css" rel="stylesheet" type="text/css" />
+</head>
+<style>
+    #bb{
+        width: 200px;
+        height: 105px;
+        /*box-shadow: 1px 1px 6px  #ffffff;
+        border-radius: 5px;*/
+        position: absolute;
+        z-index: 10;
+        left: 75px;
+        top:30px;
+    }
+    #zi{
+        font-family: "微软雅黑 Light";
+        font-size: 20px;
+        font-weight: 600;
+        background: linear-gradient(to bottom, #FFFFFF, #000000);
+        -webkit-background-clip: text;
+        color: transparent;
+        display: block;
+        margin-top: 10px;
+    }
+    #cc{
+        width: 350px;
+        height: 200px;
+        position: absolute;
+        z-index: 10;
+        left: 0px;
+        top:35%;
+    }
+    input{
+        box-shadow: 1px 1px 6px  #ffffff;
+        border-radius: 2px;
+        background-color: transparent;
+    }
+    #anum{
+        background-image: url("/image/person.png");
+        background-repeat: no-repeat;
+        background-size: 40px 36px;
+    }
+    #apass{
+        background-image: url("/image/lock.png");
+        background-repeat: no-repeat;
+        background-size: 40px 36px;
+    }
+
+</style>
+<body>
+<div class='login'>
+    <div id="bb">
+        <img src="/image/logo%20(2).png" width="170">
+        <br/>
+        <span id="zi">&nbsp;&nbsp;白百陌平安保险</span>
+    </div>
+    <div id="cc">
+
+        <form id="frm" action="/userControll/login.action" method="post">
+            <input type="text" placeholder='用户名' value="BBM101" name="userName" id="anum" AUTOCOMPLETE="OFF" style="width: 240px; height: 37px;color: #fff9ec;padding-left:40px;font-family: '微软雅黑 Light';font-weight: bold;margin-left: 20px;margin-top: 10px;">
+            <input type="password" name="passWord" placeholder='密码' id="apass" style="width: 240px; height: 37px;color: #ffffff;padding-left:40px;font-family: '微软雅黑 Light';font-weight: bold;margin-left:20px;margin-top: 20px;">
+            <br/>
+            <button id="sub" style="font-weight: bold;font-family: '微软雅黑 Light';color: #f0f0f0;background-color: transparent;margin-top: 20px;width: 285px;height: 37px;margin-left:20px;margin-top: 30px;">Login系统</button>
+        </form>
+
+
+    </div>
+
+        <div class='login_fields__password'>
+            <div class='validation' style="opacity: 1; right: -5px;top: -3px;">
+                <canvas class="J_codeimg" id="myCanvas" onclick="Code();">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>
+            </div>
+        </div>
+    <div class='disclaimer'>
+        <p>欢迎登录后台管理系统  更多了解：<a href="http://www.mycodes.net/" target="_blank">白百陌</a></p>
+    </div>
+
+</div>
+
+
+
+
+</body>
+<link href="/js/layui2/layui/css/layui.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="/js/layui2/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/layui2/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src='/js/layui2/js/stopExecutionOnTimeout.js?t=1'></script>
+<script type="text/javascript" src="/js/layui2/layui/layui.js"></script>
+<script type="text/javascript" src="/js/layui2/js/Particleground.js"></script>
+<script type="text/javascript" src="/js/layui2/js/Treatment.js"></script>
+<script type="text/javascript" src="/js/layui2/js/jquery.mockjax.js"></script>
+<script type="text/javascript">
+
+    //粒子背景特效
+    $('body').particleground({
+        dotColor: '#E8DFE8',
+        lineColor: '#133b88'
+    });
+
+</script>
+</html>
