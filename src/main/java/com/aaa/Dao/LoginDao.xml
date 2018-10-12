@@ -8,4 +8,13 @@
     <select id="getAdmin2" parameterType="String" resultType="java.util.Map">
         select * from admin_user a join jxc_role j on a.roleid=j.roleid join role_join_menu rm on j.roleid=rm.roleid join tree_menu t on t.treeid=rm.treeid join user_join_role uj on uj.aid=a.aid where a.anum=#{anum}
     </select>
+
+    <select id="getRole" resultType="String">
+        select t.treeurl from tree_menu t , role_join_menu rm, user_join_role ur ,admin_user au
+		where au.anum =#{anum} and t.treeid = rm.treeid and rm.roleid = ur.roleid and ur.aid=au.aid
+    </select>
+
+    <select id="getUser" parameterType="java.util.Map" resultType="java.util.Map">
+        select * from admin_user where anum=#{userNum} and apass=#{passWord}
+    </select>
 </mapper>

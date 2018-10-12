@@ -1,12 +1,10 @@
 package com.aaa.Service;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.aaa.Dao.LoginDao;
+import com.aaa.Util.ShiroToken;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -28,16 +26,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 public  class MyShiroRealm extends AuthorizingRealm {
     @Autowired
     private LoginService loginService;
+
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
 		// TODO Auto-generated method stub
-        String loginName=(String) arg0.fromRealm(getName()).iterator().next();
-        if(loginName!=null){
+            String loginName=(String) arg0.fromRealm(getName()).iterator().next();
             SimpleAuthorizationInfo info=new SimpleAuthorizationInfo();
             //}
-            return info;    
-        }    
-        return null;    
+            Set<String> list = loginService.getRole(loginName);
+            info.setStringPermissions(list);
+            return info;
 	}
 
 	/**
@@ -48,9 +46,19 @@ public  class MyShiroRealm extends AuthorizingRealm {
 			AuthenticationToken arg0) throws AuthenticationException {
 		// TODO Auto-generated method stub
 		UsernamePasswordToken token = (UsernamePasswordToken) arg0;
-        List<Map> list = loginService.getAdmin2(token.getUsername());
-        if(token.getUsername().equals(list.get(0).get("anum"))){
-            return new SimpleAuthenticationInfo(list.get(0).get("anum"),list.get(0).get("apass"), getName());
+
+		Map map=new HashMap();
+		map.put("userNum",token.getUsername());
+		System.out.println(token);
+		System.out.println(token.getPassword());
+		map.put("passWord","aaa");
+
+
+
+		Map user=loginService.getUser(map);
+
+        if(user!=null){
+            return new SimpleAuthenticationInfo(user,user.get("apass"),getName());
         }else{
             return null;
         }

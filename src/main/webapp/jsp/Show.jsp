@@ -22,14 +22,13 @@
         width: 100%;
         height: 100%;
     }
-
 </style>
 
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header custom-header">
 
-        <ul class="layui-nav layui-layout-left">
+        <ul class="layui-nav layui-layout-left" id="bbm">
             <li class="layui-nav-item slide-sidebar" lay-unselect>
                 <a href="javascript:;" class="icon-font"><i class="ai ai-menufold"></i></a>
             </li>
@@ -37,21 +36,21 @@
 
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
-                <a href="javascript:;">BieJun</a>
+                <a href="javascript:;">${user.aname}</a>
                 <dl class="layui-nav-child">
                     <dd><a href="">帮助中心</a></dd>
-                    <dd><a href="login.html">退出</a></dd>
+                    <dd><a href="/jsp/Login.html">退出</a></dd>
                 </dl>
             </li>
         </ul>
     </div>
 
-    <div class="layui-side custom-admin">
+    <div class="layui-side custom-admin" id="leftcontent">
         <div class="layui-side-scroll">
 
-            <div class="custom-logo">
-                <img src="/js/assets/images/logo.png" alt=""/>
-                <h1>Admin Pro</h1>
+            <div class="custom-logo" style="">
+                <img src="/image/logo%20(3).png" width="100" height="75" alt=""/>
+                <h1>BaiBaiMo</h1>
             </div>
             <ul id="Nav" class="layui-nav layui-nav-tree">
 
@@ -59,7 +58,7 @@
                     <li class="layui-nav-item">
                     <c:if test="${qx.tree==0}">
                             <a href="javascript:;">
-                                <i class="layui-icon">&#xe609;</i>
+                                <i class="layui-icon" style="font-size: 18px;">${qx.treeimg}</i>
                                 <em>${qx.treename}</em>
                             </a>
                     </c:if>
@@ -90,7 +89,7 @@
         </div>
     </div>
 
-    <div class="layui-body" style="height: 100%;">
+    <div class="layui-body" id="layuibody" style="height: 100%;width: 100%;">
         <iframe src="/jsp/Login.html" id="box3" name="baoxian" frameborder="0"></iframe>
     </div>
 </div>
@@ -103,26 +102,20 @@
         var $ = layui.jquery
             ,element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
 
-        //触发事件
-        var active = {
-            tabAdd: function(){
-                //新增一个Tab项
-                element.tabAdd('demo', {
-                    title: '新选项'+ (Math.random()*1000|0) //用于演示
-                    ,content: '内容'+ (Math.random()*1000|0)
-                    ,id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
-                })
-            }
-            ,tabChange: function(){
-                //切换到指定Tab项
-                element.tabChange('demo', '22'); //切换到：用户管理
-            }
-        };
-
-
     });
 
+    $(".icon-font").toggle(function () {
+        $("#leftcontent").css("left","-=260px");
+        $("#layuibody").css("left","0px");
+        $("#bbm").css("left","0px");
+    },function () {
+        $("#leftcontent").css("left","+=260px");
+        $("#layuibody").css("left","260px");
+        $("#bbm").css("left","260px");
+    })
+
 </script>
+
 
 <script>
 
