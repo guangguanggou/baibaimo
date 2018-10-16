@@ -89,7 +89,7 @@
         </div>
     </div>
 
-    <div class="layui-body" id="layuibody" style="height: 100%;width: 100%;">
+    <div class="layui-body" id="layuibody" style="height: 100%;width: 85%;">
         <iframe src="/jsp/Login.html" id="box3" name="baoxian" frameborder="0"></iframe>
     </div>
 </div>
@@ -107,10 +107,12 @@
     $(".icon-font").toggle(function () {
         $("#leftcontent").css("left","-=260px");
         $("#layuibody").css("left","0px");
+        $("#layuibody").css("width","100%");
         $("#bbm").css("left","0px");
     },function () {
         $("#leftcontent").css("left","+=260px");
         $("#layuibody").css("left","260px");
+        $("#layuibody").css("width","85%");
         $("#bbm").css("left","260px");
     })
 

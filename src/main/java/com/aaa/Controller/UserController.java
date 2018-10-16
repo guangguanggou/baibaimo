@@ -47,7 +47,6 @@ public class UserController {
 	}
 	@RequestMapping("/login")
 	public ModelAndView login(@RequestParam Map map,HttpServletRequest req){
-		System.out.println("执行hander");
 
 		Object userName = map.get("userName");
 		Object passWord = map.get("passWord");
@@ -56,7 +55,6 @@ public class UserController {
         mv.addObject("list",list);
 		if(list.size()>0){
 			HttpSession session = req.getSession();
-			System.out.println(list.get(0));
 			session.setAttribute("user",list.get(0));
 
 
@@ -70,7 +68,6 @@ public class UserController {
 
 
 			   UsernamePasswordToken token = new UsernamePasswordToken((String)userName, (String)passWord);
-			System.out.println(token+"====");
 			   SecurityUtils.getSubject().login(token);
 
 
@@ -78,7 +75,6 @@ public class UserController {
 		}else{
 		    mv.setViewName("/jsp/Login.html");
 		}
-		System.out.println("返回modelandview之前执行");
 		return mv;
 	}
 	@RequestMapping("/list")
