@@ -23,25 +23,28 @@ public class HanderInterceptor1 implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         HttpSession session=httpServletRequest.getSession();
         Quanxian quanxian= (Quanxian) session.getAttribute("user");
-
-        if(quanxian!=null){
-            System.out.println("xxxx");
-            System.out.println(quanxian);
+        String reqname=httpServletRequest.getServletPath();
+        if(quanxian!=null&&reqname.substring(reqname.indexOf("/") + 1, reqname.lastIndexOf("/")).equals(quanxian.getBeizhu())){
             return true;
+        }else if(quanxian.getBeizhu().equals("boss")){
+            return true;
+        }else if(reqname.equals("/homepage/getRole.action")){
+            return true;
+        }else{
+            System.out.println(reqname);
+            httpServletRequest.getRequestDispatcher("/jsp/Error/noRole.jsp").forward(httpServletRequest,httpServletResponse);
+            return false;
         }
-        return false;
     }
     //进入hander方法之后，返回modelandview之前执行
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
 
-        System.out.println("postHandle");
     }
     //hander执行完之后执行
     //统一异常处理，统一日志处理
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
 
-        System.out.println("结束");
     }
 }

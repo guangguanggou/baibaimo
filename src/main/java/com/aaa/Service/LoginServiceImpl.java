@@ -39,4 +39,9 @@ public class LoginServiceImpl implements LoginService {
     public Map getUser(Map map) {
         return loginDao.getUser(map);
     }
+
+    @Override
+    public List<Quanxian> getRole2(Integer aid) {
+        return loginDao.getRole2(aid);
+    }
 }

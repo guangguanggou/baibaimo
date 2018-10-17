@@ -1,5 +1,7 @@
 package com.aaa.Entity;
 
+import java.io.Serializable;
+
 /**
  * @ClassName Quanxian
  * @Description //TODO
@@ -7,10 +9,12 @@ package com.aaa.Entity;
  * @Date 2018/10/11 8:16
  * @Version 1.0
  **/
-public class Quanxian {
+public class Quanxian implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Integer aid;
     private String anum;
     private String aname;
+    private String beizhu;
     private Integer roleid;
     private String rolename;
     private String roledesc;
@@ -19,25 +23,19 @@ public class Quanxian {
     private String treename;
     private String treeurl;
     private String treeimg;
+    private String beizhu2;
     private Integer tree;
 
     public Quanxian() {
         super();
     }
 
-    public Quanxian(Integer aid, String anum, String aname, Integer roleid, String rolename, String roledesc, String img, Integer treeid, String treename, String treeurl, String treeimg, Integer tree) {
-        this.aid = aid;
-        this.anum = anum;
-        this.aname = aname;
-        this.roleid = roleid;
-        this.rolename = rolename;
-        this.roledesc = roledesc;
-        this.img = img;
-        this.treeid = treeid;
-        this.treename = treename;
-        this.treeurl = treeurl;
-        this.treeimg = treeimg;
-        this.tree = tree;
+    public String getBeizhu2() {
+        return beizhu2;
+    }
+
+    public void setBeizhu2(String beizhu2) {
+        this.beizhu2 = beizhu2;
     }
 
     @Override
@@ -46,6 +44,7 @@ public class Quanxian {
                 "aid=" + aid +
                 ", anum='" + anum + '\'' +
                 ", aname='" + aname + '\'' +
+                ", beizhu='" + beizhu + '\'' +
                 ", roleid=" + roleid +
                 ", rolename='" + rolename + '\'' +
                 ", roledesc='" + roledesc + '\'' +
@@ -54,8 +53,34 @@ public class Quanxian {
                 ", treename='" + treename + '\'' +
                 ", treeurl='" + treeurl + '\'' +
                 ", treeimg='" + treeimg + '\'' +
+                ", beizhu2='" + beizhu2 + '\'' +
                 ", tree=" + tree +
                 '}';
+    }
+
+    public Quanxian(Integer aid, String anum, String aname, String beizhu, Integer roleid, String rolename, String roledesc, String img, Integer treeid, String treename, String treeurl, String treeimg, String beizhu2, Integer tree) {
+        this.aid = aid;
+        this.anum = anum;
+        this.aname = aname;
+        this.beizhu = beizhu;
+        this.roleid = roleid;
+        this.rolename = rolename;
+        this.roledesc = roledesc;
+        this.img = img;
+        this.treeid = treeid;
+        this.treename = treename;
+        this.treeurl = treeurl;
+        this.treeimg = treeimg;
+        this.beizhu2 = beizhu2;
+        this.tree = tree;
+    }
+
+    public String getBeizhu() {
+        return beizhu;
+    }
+
+    public void setBeizhu(String beizhu) {
+        this.beizhu = beizhu;
     }
 
     public Integer getAid() {

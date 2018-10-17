@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/js/quickui/libs/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/quickui/libs/js/language/cn.js"></script>
+    <script type="text/javascript" src="/js/quickui/libs/js/framework.js"></script>
+    <link href="/js/quickui/libs/css/import_basic.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css" id="skin" prePath="/js/quickui/" scrollerY="false"/>
+    <link rel="stylesheet" type="text/css" id="customSkin"/>
+    <!--框架必需end-->
+
+    <!--动画方式入场效果start-->
+    <script type="text/javascript" src="/js/quickui/libs/js/pic/jomino.js"></script>
+    <script>
+        $(function(){
+            $(".navIcon").hide();
+            $(".navIcon").jomino();
+        });
+        function customHeightSet(contentHeight){
+            $(".page_content").height(contentHeight);
+        }
+    </script>
+</head>
+<style>
+    body{background-image: url("/image/5.jpg") ;
+    background-size: 100% 100%;}
+    #mydiv{
+        box-shadow: -15px 15px 15px rgba(6, 17, 47, 0.7);
+        opacity: 1;
+        top: 20px;
+        -webkit-transition-timing-function: cubic-bezier(0.68, -0.25, 0.265, 0.85);
+        -webkit-transition-property: -webkit-transform,opacity,box-shadow,top,left;
+        transition-property: transform,opacity,box-shadow,top,left;
+        -webkit-transition-duration: .5s;
+        transition-duration: .5s;
+        -webkit-transform-origin: 161px 100%;
+        -ms-transform-origin: 161px 100%;
+        transform-origin: 161px 100%;
+        -webkit-transform: rotateX(0deg);
+        transform: rotateX(0deg);
+        position: relative;
+        width: 100%;
+        /*border-top: 2px solid #D8312A;*/
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        padding: 100px 40px 40px 40px;
+        background: #35394a;
+        /* Old browsers */
+        /* FF3.6+ */
+        background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #35394a), color-stop(100%, rgb(0, 0, 0)));
+        /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(230deg, rgba(53, 57, 74, 0) 0%, rgb(0, 0, 0) 100%);
+        /* Chrome10+,Safari5.1+ */
+        /* Opera 11.10+ */
+        /* IE10+ */
+        background: linear-gradient(230deg, rgba(53, 57, 74, 0) 0%, rgb(0, 0, 0) 100%);
+        /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(53, 57, 74, 0)', endColorstr='rgb(0, 0, 0)',GradientType=1 );
+        /* IE6-9 fallback on horizontal gradient */
+        overflow: auto;
+    }
+    .nav{
+        height: 126px;
+        border-radius: 10px;
+        background-color:#000000;
+        background-color:rgba(0,0,0,0.2);
+        width: 260px;
+        color: #C2BE9E;
+    }
+    .nav:hover{
+        background-color:#000000;/* IE6和部分IE7内核的浏览器(如QQ浏览器)下颜色被覆盖 */
+        background-color:rgba(0,0,0,0.6);
+        color: #FFFFFF;
+    }
+</style>
+<body>
+<div  id="mydiv" class="page_content">
+    <table width="100%" height="90%" style="margin-bottom: 50px;">
+        <tr><td class="ali02 ver02">
+            <div  style="width:900px;margin:0 auto;">
+                <table class="ali01 ver01">
+                    <tr height="146">
+                        <td width="290">
+                            <div class="nav" onclick="top.Toast('showNoticeToast', '个人中心')">
+                                <div class="navIcon_left"><img src="/js/quickui/libs/icons/icon_flat/male.png"/></div>
+                                <div class="navIcon_right">
+                                    <div class="navIcon_right_title">个人中心</div>
+                                    <div class="navIcon_right_con">
+                                        个人基础信息设置<br />
+                                        手机短信提醒设置<br />
+                                        更改密码
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </td>
+                        <td width="290">
+                            <div class="nav" onclick="top.Toast('showNoticeToast', '个人中心')">
+                                <div class="navIcon_left"><img src="/js/quickui/libs/icons/icon_flat/male.png"/></div>
+                                <div class="navIcon_right">
+                                    <div class="navIcon_right_title">个人中心</div>
+                                    <div class="navIcon_right_con">
+                                        个人基础信息设置<br />
+                                        手机短信提醒设置<br />
+                                        更改密码
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </td>
+                        <td width="290">
+                            <div class="nav" onclick="top.Toast('showNoticeToast', '个人中心')">
+                                <div class="navIcon_left"><img src="/js/quickui/libs/icons/icon_flat/male.png"/></div>
+                                <div class="navIcon_right">
+                                    <div class="navIcon_right_title">个人中心</div>
+                                    <div class="navIcon_right_con">
+                                        个人基础信息设置<br />
+                                        手机短信提醒设置<br />
+                                        更改密码
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr height="146">
+                        <td width="290">
+                            <div class="nav" onclick="top.Toast('showNoticeToast', '个人中心')">
+                                <div class="navIcon_left"><img src="/js/quickui/libs/icons/icon_flat/male.png"/></div>
+                                <div class="navIcon_right">
+                                    <div class="navIcon_right_title">个人中心</div>
+                                    <div class="navIcon_right_con">
+                                        个人基础信息设置<br />
+                                        手机短信提醒设置<br />
+                                        更改密码
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </td>
+                        <td width="290">
+                            <div class="nav" onclick="top.Toast('showNoticeToast', '个人中心')">
+                                <div class="navIcon_left"><img src="/js/quickui/libs/icons/icon_flat/male.png"/></div>
+                                <div class="navIcon_right">
+                                    <div class="navIcon_right_title">个人中心</div>
+                                    <div class="navIcon_right_con">
+                                        个人基础信息设置<br />
+                                        手机短信提醒设置<br />
+                                        更改密码
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </td>
+                        <td width="290">
+                            <div class="nav" onclick="top.Toast('showNoticeToast', '个人中心')">
+                                <div class="navIcon_left"><img src="/js/quickui/libs/icons/icon_flat/male.png"/></div>
+                                <div class="navIcon_right">
+                                    <div class="navIcon_right_title">个人中心</div>
+                                    <div class="navIcon_right_con">
+                                        个人基础信息设置<br />
+                                        手机短信提醒设置<br />
+                                        更改密码
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr height="146">
+                        <td width="290">
+                            <div class="nav" onclick="top.Toast('showNoticeToast', '个人中心')">
+                                <div class="navIcon_left"><img src="/js/quickui/libs/icons/icon_flat/male.png"/></div>
+                                <div class="navIcon_right">
+                                    <div class="navIcon_right_title">个人中心</div>
+                                    <div class="navIcon_right_con">
+                                        个人基础信息设置<br />
+                                        手机短信提醒设置<br />
+                                        更改密码
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </td>
+                        <td width="290">
+                            <div class="nav" onclick="top.Toast('showNoticeToast', '个人中心')">
+                                <div class="navIcon_left"><img src="/js/quickui/libs/icons/icon_flat/male.png"/></div>
+                                <div class="navIcon_right">
+                                    <div class="navIcon_right_title">个人中心</div>
+                                    <div class="navIcon_right_con">
+                                        个人基础信息设置<br />
+                                        手机短信提醒设置<br />
+                                        更改密码
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </td>
+                        <td width="290">
+                            <div class="nav" onclick="top.Toast('showNoticeToast', '个人中心')">
+                                <div class="navIcon_left"><img src="/js/quickui/libs/icons/icon_flat/male.png"/></div>
+                                <div class="navIcon_right">
+                                    <div class="navIcon_right_title">个人中心</div>
+                                    <div class="navIcon_right_con">
+                                        个人基础信息设置<br />
+                                        手机短信提醒设置<br />
+                                        更改密码
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td></tr>
+    </table>
+
+</div>
+
+</body>
+<script type="text/javascript" src="/js/canvas-particle.js"></script>
+<script type="text/javascript">
+    window.onload = function() {
+        //配置
+        var config = {
+            vx: 4,	//小球x轴速度,正为右，负为左
+            vy: 4,	//小球y轴速度
+            height: 2,	//小球高宽，其实为正方形，所以不宜太大
+            width: 2,
+            count: 200,		//点个数
+            color: "121, 162, 185", 	//点颜色
+            stroke: "130,255,255", 		//线条颜色
+            dist: 6000, 	//点吸附距离
+            e_dist: 20000, 	//鼠标吸附加速距离
+            max_conn: 10 	//点到点最大连接数
+        }
+
+        //调用
+        CanvasParticle(config);
+    }
+
+    $(function () {
+        $.ajax({
+            url:"/homepage/getRole.action",
+            type:"post",
+            data:{aid:"${user.aid}"},
+            dataType:"json",
+            success:function (data) {
+                alert(data);
+
+            }
+        })
+    })
+</script>
+</html>

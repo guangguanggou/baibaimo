@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.3.RELEASE</version>
+        <version>2.0.0.RELEASE</version>
     </parent>
 
     <properties>
@@ -18,8 +18,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <org.springframework-version>3.2.4.RELEASE</org.springframework-version>
-        <jackson-mapper-asl-version>1.9.12</jackson-mapper-asl-version>
-        <jackson-core-asl-version>1.9.12</jackson-core-asl-version>
+        <jackson-mapper-asl-version>2.8.0</jackson-mapper-asl-version>
+        <jackson-core-asl-version>2.8.0</jackson-core-asl-version>
         <mysql-connector-java-version>5.1.8</mysql-connector-java-version>
         <org.mybatis-version>3.2.7</org.mybatis-version>
         <org.mybatis-spring-version>1.2.2</org.mybatis-spring-version>
@@ -30,13 +30,23 @@
         <org.apache.commons-version>3.1</org.apache.commons-version>
         <commons-codec-version>1.6</commons-codec-version>
         <log4j-version>1.2.16</log4j-version>
+        <spring.version>4.3.5.RELEASE</spring.version>
     </properties>
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+        <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>2.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-ehcache</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>jstl</groupId>
@@ -108,12 +118,17 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
-            <version>1.2.2</version>
+            <version>1.3.1</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.2.8</version>
+            <version>3.2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>2.6.6</version>
         </dependency>
         <!--Mysql / DataSource-->
         <dependency>

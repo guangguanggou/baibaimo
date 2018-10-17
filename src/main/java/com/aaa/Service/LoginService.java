@@ -11,4 +11,5 @@ public interface LoginService {
     List<Map> getAdmin2(String anum);
     Set<String> getRole(String anum);
     Map getUser(Map map);
+    List<Quanxian> getRole2(Integer aid);
 }

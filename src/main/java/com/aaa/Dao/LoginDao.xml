@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aaa.Dao.LoginDao">
+    <cache type="com.aaa.Util.RedisCache"/>
     <select id="getAdmin" parameterType="java.util.Map" resultType="Quanxian">
-        select a.aid,a.anum,a.aname,j.roleid,j.rolename,j.roledesc,j.img,t.treeid,t.treename,t.treeurl,t.treeimg,t.tree from admin_user a join jxc_role j on a.roleid=j.roleid join role_join_menu rm on j.roleid=rm.roleid join tree_menu t on t.treeid=rm.treeid join user_join_role uj on uj.aid=a.aid where a.anum=#{userName} and a.apass=#{passWord}
+        select a.aid,a.anum,a.aname,a.beizhu,j.roleid,j.rolename,j.roledesc,j.img,t.treeid,t.treename,t.treeurl,t.treeimg,t.tree from admin_user a join jxc_role j on a.roleid=j.roleid join role_join_menu rm on j.roleid=rm.roleid join tree_menu t on t.treeid=rm.treeid join user_join_role uj on uj.aid=a.aid where a.anum=#{userName} and a.apass=#{passWord}
     </select>
     <select id="getAdmin2" parameterType="String" resultType="java.util.Map">
         select * from admin_user a join jxc_role j on a.roleid=j.roleid join role_join_menu rm on j.roleid=rm.roleid join tree_menu t on t.treeid=rm.treeid join user_join_role uj on uj.aid=a.aid where a.anum=#{anum}
@@ -16,5 +17,8 @@
 
     <select id="getUser" parameterType="java.util.Map" resultType="java.util.Map">
         select * from admin_user where anum=#{userNum} and apass=#{passWord}
+    </select>
+    <select id="getRole2" parameterType="Integer" resultType="Quanxian">
+        select a.aid,a.anum,a.aname,a.beizhu,j.roleid,j.rolename,j.roledesc,j.img,t.treeid,t.treename,t.treeurl,t.treeimg,t.tree,t.beizhu beizhu2 from admin_user a join jxc_role j on a.roleid=j.roleid join role_join_menu rm on j.roleid=rm.roleid join tree_menu t on t.treeid=rm.treeid join user_join_role uj on uj.aid=a.aid where a.aid=#{id}
     </select>
 </mapper>
