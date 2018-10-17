@@ -11,7 +11,7 @@ public class YygServiceImpl implements YygService {
     @Autowired
     private YygDao dao;
     @Override
-    public List<Map> GetHb() {
-        return dao.GetHb();
+    public List<Map> GetHb(Map map) {
+        return dao.GetHb(map);
     }
 }
