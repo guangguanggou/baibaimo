@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.Dao.YygDao">
+    <select id="GetHb" resultType="java.util.Map" parameterType="java.util.Map">
+        select * from distributingcases di,register re,chit ch,chitdetails cd,tb_company tb,client cl,clientdetails ct where di.registerid=re.registerid and di.chitid=ch.chitid and ch.chitid=cd.chitid and tb.chitid=ch.chitid and cl.tcid=tb.tcid and cl.clientid=ct.clientid
+        <if test="pch!=null">
+            and where re.batch=#{pch}
+        </if>
+        <if test="cxrxm!=null">
+            and where cl.clientname=#{cxrxm}
+        </if>
+        <if test="cxrzj!=null">
+            and where cl.clientsfz=#{cxrzj}
+        </if>
+        <if test="zt!=null">
+            and where di.distributingcasesstatic=#{zt}
+        </if>
+    </select>
+</mapper>
