@@ -9,7 +9,9 @@
 <html>
 <head>
     <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="http://cdn.staticfile.org/jquery/3.3.1/jquery.js"></script>
+    <script src="http://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script src="http://cdn.staticfile.org/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://cdn.staticfile.org/vue/2.5.16/vue.min.js"></script>
     <title>Title</title>
     <style>
@@ -45,9 +47,9 @@
             <span class="jc">出险人证件号码</span>
             <input class="from-control" name="map['cxrzj']"/><br/><br/>
             <span class="jc">汇办状态</span>
-            <select class="from-control" name="map['zt']">
-                <option value="4">待汇办</option>
-                <option value="5">已汇办</option>
+            <select class="from-control" name="map['zt']" onchange="se(this)">
+                <option value="3">待汇办</option>
+                <option value="4">已汇办</option>
             </select>
             <br><br>
         </form>
@@ -90,15 +92,63 @@
         共<span></span>页
     </div>
 
-    <button class="btn btn-info" style="position:relative;left:80%;width:7%;">保存</button>
+</div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="position:relative;left:80%;width:8%;" id="save">保存</button>
+
+<!-- 模态框 -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">意见</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                处理意见:<input class="from-control" id="yj"/>
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="save()">确定</button>
+            </div>
+
+        </div>
+    </div>
 </div>
 </body>
 </html>
 <script type="text/javascript">
+    var hbid="";
     function one(obj){
-        $(obj).css("background-color","red");
-        $(obj).siblings().css("background-color","#FFFFFF")
-        //alert($(obj).children(":first").text());
+        $(obj).css("background-color","#e7e7e7");
+        $(obj).siblings().css("background-color","#FFFFFF");
+        hbid=$(obj).children(":first").text();
+    }
+    function save(){
+        $.ajax({
+            url:'/BBM101/updateFa.action',
+            type:'post',
+            data:{"hbid":hbid,"yj":$("#yj").val()},
+            dataType:'json',
+            success:function () {
+                if(data=="true"){
+                    window.location.href="/BBM101/Hbcl.action";
+                }
+            }
+        })
+        $("#yj").val(hbid);
+    }
+    function se(obj){
+        if($(obj).val()==3){
+            $("#save").css("display","block");
+        }else if($(obj).val()==4){
+            $("#save").css("display","none");
+        }
     }
     new Vue({
         el:'#app',
@@ -129,9 +179,9 @@
                             str+="<td>"+data[i].clientsfz.substring(6,14)+"</td>";
                             str+="<td>"+data[i].clientsfz+"</td>";
                             str+="<td>"+data[i].distributingcasesid+"</td>";
-                            if(data[i].distributingcasesstatic==4){
+                            if(data[i].distributingcasesstatic==3){
                                 str+="<td>待汇办</td>";
-                            }else if(data[i].distributingcasesstatic==5){
+                            }else if(data[i].distributingcasesstatic==4){
                                 str+="<td>已汇办</td>";
                             }
                             str+="</tr>";

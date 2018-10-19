@@ -2,8 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aaa.Dao.YygDao">
+    <!--查询汇办案件信息-->
     <select id="GetHb" resultType="java.util.Map" parameterType="java.util.Map">
-        select * from distributingcases di,register re,chit ch,chitdetails cd,tb_company tb,client cl,clientdetails ct where di.registerid=re.registerid and di.chitid=ch.chitid and ch.chitid=cd.chitid and tb.chitid=ch.chitid and cl.tcid=tb.tcid and cl.clientid=ct.clientid
+        select * from distributingcases di,register re,chit ch,chitdetails cd,tb_company tb,client cl,clientdetails ct
+        where di.registernum=re.registernum and di.chitid=ch.chitid and ch.chitid=cd.chitid and tb.chitid=ch.chitid and
+        cl.tcid=tb.tcid and cl.clientid=ct.clientid
         <if test="pch!=''">
             and re.batch=#{pch}
         </if>
@@ -17,4 +20,13 @@
             and di.distributingcasesstatic=#{zt}
         </if>
     </select>
+    <!--更改分案状态-->
+    <update id="UpdateFa" parameterType="String">
+        update distributingcases set distributingcasesstatic=4 where distributingcasesid=#{hbid}
+    </update>
+
+    <!--向idea表添加处理意见-->
+    <insert id="InsertIdea" parameterType="String">
+        insert into idea(distributingcasesnum,huibanyijian,ideadate) values(#{hbid},#{yj},now())
+    </insert>
 </mapper>
